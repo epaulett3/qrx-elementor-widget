@@ -1,0 +1,47 @@
+.elementor-widget-qrx-image-box-with-button.elementor-vertical-align-top .elementor-image-box-wrapper {
+    align-items: flex-start;
+}
+.elementor-widget-qrx-image-box-with-button.elementor-position-left .elementor-image-box-wrapper {
+    text-align: left;
+    flex-direction: row;
+}
+.elementor-widget-qrx-image-box-with-button.elementor-position-right .elementor-image-box-wrapper {
+    text-align: right;
+    flex-direction: row-reverse;
+}
+
+.elementor-widget-qrx-image-box-with-button .elementor-image-box-img {
+    display: inline-block;
+}
+
+.elementor-widget-qrx-image-box-with-button.elementor-position-left .elementor-image-box-wrapper, .elementor-widget-qrx-image-box-with-button.elementor-position-right .elementor-image-box-wrapper{
+    display: flex;
+}
+
+.elementor-widget-qrx-image-box-with-button .elementor-image-box-content {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.elementor-widget-qrx-image-box-with-button.elementor-vertical-align-middle .elementor-image-box-content{
+    justify-content: center;
+}
+
+.elementor-widget-qrx-image-box-with-button.elementor-vertical-align-top .elementor-image-box-content{
+    justify-content: flex-start;
+}
+
+.elementor-widget-qrx-image-box-with-button.elementor-vertical-align-bottom .elementor-image-box-content{
+    justify-content: flex-end;
+}
+
+/* MEDIA QUERY */
+
+@media screen and (max-width: 767px){
+    .elementor-widget-qrx-image-box-with-button.elementor-position-left .elementor-image-box-wrapper, 
+    .elementor-widget-qrx-image-box-with-button.elementor-position-right .elementor-image-box-wrapper
+    {
+        flex-direction: column;
+    }
+}
