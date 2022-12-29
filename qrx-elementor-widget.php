@@ -34,7 +34,7 @@ function register_qrxelementor_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/widgets/imagebox-with-button-widget.php' );
 
     // register widgets
-    
+        
     // custom widgets
     $widgets_manager->register( new \Widget_Image_Box_With_Button() ); 
 
