@@ -60,3 +60,4 @@ function qrxew_register_enqueue_style(){
     wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_TXT_DOMAIN . '/assets/css/style.css' ), [], null );
     wp_enqueue_style( QRXEW_TXT_DOMAIN.'-style' );
 }
+
