@@ -1,4 +1,4 @@
-# Elementor Addon Widgets
+# QRx Elementor Widget
 
 Version: 1.0.5
 
