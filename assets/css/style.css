@@ -36,6 +36,11 @@
     justify-content: flex-end;
 }
 
+.elementor-widget-qrx-nav-menu .elementor-widget-container {
+    display: flex;
+    flex-direction: column;
+}
+
 /* MEDIA QUERY */
 
 @media screen and (max-width: 767px){
