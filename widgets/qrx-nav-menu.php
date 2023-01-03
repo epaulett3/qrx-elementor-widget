@@ -39,7 +39,7 @@ class QRx_Nav_Menu extends Widget_Base {
 	}
 
 	public function get_script_depends() {
-		return [ 'smartmenus' ];
+		return [ 'jquery', 'smartmenus', QRXEW_PLUGIN_NAME . '-script' ];
 	}
 
     	/**

@@ -17,6 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define('QRXEW_TXT_DOMAIN', 'qrx-elementor-widget');
+define('QRXEW_PLUGIN_NAME', 'qrx-elementor-widget');
 
 /**
  * Register Widget.
@@ -56,13 +57,14 @@ add_action('wp_enqueue_scripts', 'qrxew_register_style');
 
 
 function qrxew_register_style(){
-    wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_TXT_DOMAIN . '/assets/css/style.css' ), [], null );
+    wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_PLUGIN_NAME . '/assets/css/style.css' ), [], null );
+    wp_register_script(QRXEW_TXT_DOMAIN.'-script', plugins_url(QRXEW_PLUGIN_NAME . '/assets/js/script.js'), ['jquery'], null);
     
 }
 
 function qrxew_register_enqueue_style(){
     // load css
-    wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_TXT_DOMAIN . '/assets/css/style.css' ), [], null );
+    wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_PLUGIN_NAME . '/assets/css/style.css' ), [], null );
     wp_enqueue_style( QRXEW_TXT_DOMAIN.'-style' );
 }
 
