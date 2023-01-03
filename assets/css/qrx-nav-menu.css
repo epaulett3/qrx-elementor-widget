@@ -544,6 +544,107 @@ ul.elementor-nav-menu--dropdown a,ul.elementor-nav-menu--dropdown a:focus,ul.ele
     right: 0;
 }
 
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle {
+    padding: 0;
+    position: relative;
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle .elementor-menu-toggle__icon--open, .elementor-widget-qrx-nav-menu .elementor-menu-toggle .elementor-menu-toggle__icon--close {
+    display: flex;
+    position: absolute;
+    top: 0px;
+    transition: 0.4s all;
+    height: 100%;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle {
+    width: 32px;
+    height: 27px;
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle .elementor-menu-toggle__icon--close{
+    opacity: 0;
+    transform: rotate(-90deg);
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle .elementor-menu-toggle__icon--open{
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--close{
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.elementor-widget-qrx-nav-menu .elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--open{
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+
+/* STYLE 1 DROPDOWN CSS */
+
+
+.elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-nav-menu--dropdown.elementor-nav-menu__container {
+    position: fixed;
+    margin: 0;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    box-shadow: none !important;
+    background: #3a3a3a8a;
+    z-index: -1;
+    max-height: none !important;
+    transform: scaleY(1);
+    opacity: 0;
+    transition: all 0.3s ease-in 0.3s;
+    transition-delay: 0.3s;
+    visibility: hidden;
+    
+}
+
+.elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-nav-menu--dropdown.elementor-nav-menu__container > ul.elementor-nav-menu {
+    max-width: 300px;
+    width: 100%;
+    background: #fff;
+    height: 100%;
+    padding-top: 80px;
+    transition: transform 0.2s ease-in;
+    transform: translateX(300px);
+}
+
+.admin-bar .elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-nav-menu--dropdown.elementor-nav-menu__container > ul.elementor-nav-menu {
+    padding-top: 120px;
+}
+
+
+.elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-menu-toggle{
+    z-index: 99;
+}
+
+
+.elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-menu-toggle.elementor-active + .elementor-nav-menu--dropdown.elementor-nav-menu__container{
+    opacity: 1;
+    transform: scaleY(1);
+    z-index: 9;
+    transition: all 0.3s ease-in;
+    visibility: visible;
+    
+}
+
+.elementor-widget-qrx-nav-menu.qrx-nav-menu--toggle-style-style1 .elementor-menu-toggle.elementor-active + .elementor-nav-menu--dropdown.elementor-nav-menu__container > ul.elementor-nav-menu {
+    transform: translateX(0px);
+    transition: transform 0.2s ease-in 0.2s;
+}
+
+
+/* END */
+
 @media (max-width:767px){
     .elementor-nav-menu--dropdown-mobile .elementor-nav-menu--main{
         display:none

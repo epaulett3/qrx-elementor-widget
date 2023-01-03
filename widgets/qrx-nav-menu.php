@@ -356,6 +356,24 @@ class QRx_Nav_Menu extends Widget_Base {
 		);
 
 		$this->add_control(
+			'mobile_dropdown_style',
+			[
+				'label' => esc_html__( 'Style', QRXEW_TXT_DOMAIN ),
+				'type' => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => [
+					'' => esc_html__( 'Default', QRXEW_TXT_DOMAIN ),
+					'style1' => esc_html__( 'Style 1', QRXEW_TXT_DOMAIN ),
+				],
+				'condition' => [
+					'dropdown!' => 'none',
+				],
+				'prefix_class' => 'qrx-nav-menu--toggle-style-'
+			]
+		);
+
+
+		$this->add_control(
 			'full_width',
 			[
 				'label' => esc_html__( 'Full Width', QRXEW_TXT_DOMAIN ),
@@ -562,6 +580,7 @@ class QRx_Nav_Menu extends Widget_Base {
 				'separator' => 'before',
 			]
 		);
+
 
 		$this->end_controls_section();
 
@@ -1281,6 +1300,7 @@ class QRx_Nav_Menu extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => '--nav-menu-icon-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .elementor-menu-toggle' => 'width: calc( {{SIZE}}{{UNIT}} + 10px ); height: calc( {{SIZE}}{{UNIT}} + 5px )'
 				],
 				'separator' => 'before',
 			]
