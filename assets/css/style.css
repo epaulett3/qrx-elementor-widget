@@ -36,22 +36,8 @@
     justify-content: flex-end;
 }
 
-.elementor-widget-qrx-nav-menu .elementor-widget-container {
-    display: flex;
-    flex-direction: column;
-}
 
-
-.elementor-widget-qrx-nav-menu:not(.elementor-nav-menu--toggle) .elementor-menu-toggle{
-    display: none;
-}
-
-.elementor-widget-qrx-nav-menu .elementor-menu-toggle + .elementor-nav-menu--dropdown {
-    position: absolute;
-    width: 100%;
-    top: 24px;
-}
-
+/* .elementor-widget-qrx-nav-menu a, .elementor-widget-qrx-nav-menu a:focus, .elementor-widget-qrx-nav-menu a:hover */
 
 /* MEDIA QUERY */
 
@@ -62,5 +48,8 @@
         flex-direction: column;
     }
 }
+
+
+
 
 /* TESTING COMMIT */

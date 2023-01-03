@@ -46,7 +46,7 @@ class QRx_Nav_Menu extends Widget_Base {
 	 * Get Style dependencies for this widget
 	 */
 	public function get_style_depends(){
-		return [QRXEW_TXT_DOMAIN .'-style'];
+		return [QRXEW_TXT_DOMAIN .'-style', 'qrx-nav-menu'];
 	}
 
 
@@ -558,6 +558,7 @@ class QRx_Nav_Menu extends Widget_Base {
 					'toggle!' => '',
 					'dropdown!' => 'none',
 				],
+				'prefix_class' => 'qrx-nav-menu--toggle-align-',
 				'separator' => 'before',
 			]
 		);

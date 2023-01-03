@@ -59,6 +59,9 @@ add_action('wp_enqueue_scripts', 'qrxew_register_style');
 function qrxew_register_style(){
     wp_register_style( QRXEW_TXT_DOMAIN.'-style', plugins_url( QRXEW_PLUGIN_NAME . '/assets/css/style.css' ), [], null );
     wp_register_script(QRXEW_TXT_DOMAIN.'-script', plugins_url(QRXEW_PLUGIN_NAME . '/assets/js/script.js'), ['jquery'], null);
+
+    $enable_minified = true;
+    wp_register_style('qrx-nav-menu', plugins_url(QRXEW_PLUGIN_NAME . '/assets/css/qrx-nav-menu'. ($enable_minified ? '.min' : '' ) .'.css'));
     
 }
 
