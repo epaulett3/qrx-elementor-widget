@@ -71,3 +71,5 @@ function qrxew_register_enqueue_style(){
     wp_enqueue_style( QRXEW_TXT_DOMAIN.'-style' );
 }
 
+
+
