@@ -34,12 +34,14 @@ function register_qrxelementor_widget( $widgets_manager ) {
 	require_once( __DIR__ . '/widgets/prodcat-list-widget.php' );
 	require_once( __DIR__ . '/widgets/imagebox-with-button-widget.php' );
 	require_once( __DIR__ . '/widgets/qrx-nav-menu.php' );
+	require_once( __DIR__ . '/widgets/post-carousel.php' );
 
     // register widgets
         
     // custom widgets
     $widgets_manager->register( new \Widget_Image_Box_With_Button() );  
     $widgets_manager->register( new \QRx_Nav_Menu() );  
+    $widgets_manager->register( new \Widget_QRx_Post_Carousel() );  
 
     // woocommerce related widgets
     if(class_exists('WooCommerce')) {
