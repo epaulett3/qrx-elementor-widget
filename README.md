@@ -11,4 +11,3 @@ Widgets Available:
 - Woocommerce Category List
 - QRx Nav Menu (IN DEVELOPMENT)
 - Post Carousel (IN DEVELOPMENT)
-- 
