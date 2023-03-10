@@ -171,6 +171,21 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
             ]
         );
 
+        // Display Categories in Hierarchical way
+        $this->add_control(
+            'enable_category_hierarchy',
+            [
+                'label'     => esc_html( 'Display cateories in Hierarchical way?', QRXEW_TXT_DOMAIN ),
+                'type'      => \Elementor\Controls_Manager::SWITCHER,
+                'label_on'  => esc_html( 'yes', QRXEW_TXT_DOMAIN ),
+                'label_off' => esc_html( 'no', QRXEW_TXT_DOMAIN ),
+                'return_value' => 'yes',
+                'default'   => 'no',
+
+                
+            ]
+        );
+
         // Exclude Product Categories Control
         $this->add_control(
 			'exclude_prodcat_list',
