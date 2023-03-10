@@ -6,7 +6,7 @@
 /*
 Plugin Name: QRx Elementor Widget
 Description: A plugin that addes custom Elementor Widget
-Version: 1.0.5
+Version: 1.0.6
 Author: Jessie Paul (Kaival Marketing Services)
 Author URI: kaivalmarketingservices.com
 
