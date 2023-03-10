@@ -381,17 +381,19 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
      * Get Woocommerce Product Categories,
      * 
      */
-    private function getProductCategories($hide_empty = 'no'){
+    private function getProductCategories($args = []){
 
-        $set_hide_empty = filter_var($hide_empty, FILTER_VALIDATE_BOOLEAN);
+        // $set_hide_empty = filter_var($hide_empty, FILTER_VALIDATE_BOOLEAN);
 
-        $cat_args = array(
+        $default_args = array(
             'orderby'    => 'name',
             'order'      => 'ASC',
-            'hide_empty' => $set_hide_empty,
+            'hide_empty' => 1,
+            'taxonomy' => 'product_cat',
         );
+        $args = wp_parse_args( $args, $default_args );
         
-        $product_categories = get_terms( 'product_cat', $cat_args );
+        $product_categories = get_terms( $args );
 
         return $product_categories;
     }
@@ -427,6 +429,60 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
         }
     }
 
+    /**
+     * DISPLAY THE LIST OF CATEGORIES
+     */
+    private function display_categorylist( $categories = [], $parent_id = 0, $level = 0 ) {
+        if( count($categories) == 0) return;
+
+        $settings = $this->get_settings_for_display();
+        $show_prod_count = $settings['show_prod_count'];
+        $enable_category_link = $settings['enable_category_link'];
+        $hide_empty_cat = $settings['hide_empty_cat'];
+        $exclude_category_ids = $settings['exclude_prodcat_list'];
+
+
+        $enable_category_hierarchy = filter_var($settings['enable_category_hierarchy'], FILTER_VALIDATE_BOOLEAN);
+        $category_level_class = $enable_category_hierarchy ? 'qrx-prodcat-level-'.$level : '';
+
+        ?>
+        <ul class="qrx-prodcat-items <?php echo $category_level_class; ?>">
+        <?php
+        foreach($categories as $key => $category) {
+            // if(in_array($category->term_id, $exclude_category_ids) ) continue;
+            if($enable_category_hierarchy && $category->parent != $parent_id) continue;
+
+            $category_label = $category->name . ($show_prod_count === 'yes' ? ' ('. $category->count .')' : '' );
+            $category_label_html = sprintf('<span class="qrx-prodcat-label">%s</span>',  $category_label );
+            if($enable_category_link === 'yes'){
+                $category_label_html =  sprintf('<a class="qrx-prodcat-label" href="%s">%s</a>', esc_attr( get_term_link( $category) ), $category_label  );
+                
+            }
+            echo '<li class="qrx-prodcat-item qrx-prodcat-'. $category->term_id .' '. ($this->isProductCategory($category->term_id) ? 'qrx-prodcat-active' : '' ) .'">'. $category_label_html;
+            
+            // check if hierarchy is enabled
+            if($enable_category_hierarchy) {
+                $sub_args = [
+                    'taxonomy' => 'product_cat',
+                    'hide_empty' => $hide_empty_cat,
+                    'exclude' => $exclude_category_ids,
+                    'hierarchical' => filter_var($enable_category_hierarchy, FILTER_VALIDATE_BOOLEAN),
+                    'parent' => $category->term_id,
+                ];
+                $subCategories = $this->getProductCategories($sub_args);
+                $nextlevel = $level++;
+                $this->display_categorylist($subCategories, $category->term_id, $nextlevel);
+        
+            }
+
+            echo '</li>';
+        }
+        ?>
+        </ul>
+        <?php 
+        
+    }
+
 
 	/**
 	 * Render oEmbed widget output on the frontend.
@@ -442,10 +498,18 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
         
         // get data
         $hide_empty_cat = $settings['hide_empty_cat'];
-        $show_prod_count = $settings['show_prod_count'];
-        $enable_category_link = $settings['enable_category_link'];
         $exclude_category_ids = $settings['exclude_prodcat_list'];
-        $productCategories = $this->getProductCategories($hide_empty_cat);
+        $enable_category_hierarchy = $settings['enable_category_hierarchy'];
+
+        $args = [
+            'taxonomy' => 'product_cat',
+            'hide_empty' => $hide_empty_cat,
+            'exclude' => $exclude_category_ids,
+            'hierarchical' => filter_var($enable_category_hierarchy, FILTER_VALIDATE_BOOLEAN),
+        ];
+        $productCategories = $this->getProductCategories($args);
+
+        
 
         ?>
         <div class="qrx-elementor-widget <?php echo $this->get_name(); ?>"> 
@@ -453,22 +517,9 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
             if(!empty($settings['title'])) {
                 echo '<h2 class="qrx-prodcat-title">'. $settings['title'] .'</h2>';
             }
+            // display categories
+            $this->display_categorylist($productCategories);
             ?>
-            <ul class="qrx-prodcat-items">
-            <?php
-            foreach($productCategories as $key => $category) {
-                if(in_array($category->term_id, $exclude_category_ids) ) continue;
-                $category_label = $category->name . ($show_prod_count === 'yes' ? ' ('. $category->count .')' : '' );
-                $category_label_html = sprintf('<span class="qrx-prodcat-label">%s</span>',  $category_label );
-                if($enable_category_link === 'yes'){
-                    $category_label_html =  sprintf('<a class="qrx-prodcat-label" href="%s">%s</a>', esc_attr( get_term_link( $category) ), $category_label  );
-                    
-                }
-                echo '<li class="qrx-prodcat-item qrx-prodcat-'. $category->term_id .' '. ($this->isProductCategory($category->term_id) ? 'qrx-prodcat-active' : '' ) .'">'. $category_label_html .'</li>';
-            }
-            ?>
-            </ul>
-
         </div>
         <?php 
 
