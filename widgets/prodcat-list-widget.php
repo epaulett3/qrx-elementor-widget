@@ -290,7 +290,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html__( 'Text Color', QRXEW_TXT_DOMAIN ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item .qrx-prodcat-label' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item > .qrx-prodcat-label' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -300,7 +300,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
-				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item .qrx-prodcat-label',
+				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item > .qrx-prodcat-label',
 			]
 		);
 
@@ -320,7 +320,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html__( 'Text Color', QRXEW_TXT_DOMAIN ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item.qrx-prodcat-active .qrx-prodcat-label' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item.qrx-prodcat-active > .qrx-prodcat-label' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -331,7 +331,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
 			[
 				'name' => 'active_category_typography',
                 'label' => esc_html( 'Typography', QRXEW_TXT_DOMAIN ),
-				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item.qrx-prodcat-active .qrx-prodcat-label',
+				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item.qrx-prodcat-active > .qrx-prodcat-label',
 			]
 		);
 
@@ -351,7 +351,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
                 'label' => esc_html__( 'Text Color', QRXEW_TXT_DOMAIN ),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item:hover .qrx-prodcat-label' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item:hover > .qrx-prodcat-label' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -362,7 +362,7 @@ class Elementor_Woo_ProdCat_List_Widget extends \Elementor\Widget_Base {
 			[
 				'name' => 'hover_text_typography',
                 'label' => esc_html( 'Typography', QRXEW_TXT_DOMAIN ),
-				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item:hover .qrx-prodcat-label',
+				'selector' => '{{WRAPPER}} .qrx-prodcat-items .qrx-prodcat-item:hover > .qrx-prodcat-label',
 			]
 		);
 
